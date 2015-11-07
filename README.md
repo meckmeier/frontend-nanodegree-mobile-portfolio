@@ -7,8 +7,9 @@ My Goal: to complete this project before the end of this month.
 Mary Eckmeier
 
 Key elements to address: optimize index.html (per instructions from pagespeed insights)
-
-
+Resized pizzeria.jpg into 2 sizes (one for index, and one for pizza)
+Created a GULP workflow to compress all the files. and constructed a build folder
+  
 1. Forked repository.
 2. Re configure git bash / as my computer failed since i took the course and I can't remember all the setup tasks.
     a. git init
@@ -16,29 +17,20 @@ Key elements to address: optimize index.html (per instructions from pagespeed in
     c. git add
     d. git commit
 
-Check out the repository
-1. To inspect the site on your phone, you can run a local server
+To run a local server for viewing the app: I created a bat file with this command:
+   python -m SimpleHTTPServer 8080
+   and placed in the BUILD directory (i am using the root as my dev environment.)
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
+To create a http site for Pagespeed to evaluate, I used ngrok
+(I did try to use the NGROK task in Gulp, but was not successful in implementing it)
+    Run NGROK.cmd -- which brings up a new window and navigate to the BUILD directory and type
+       ngrok http 8080
+   I add a BUILD directory for the compressed files.
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
