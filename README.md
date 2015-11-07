@@ -1,16 +1,22 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+After completing required Nanodegree courses on performance optimization I am attempting to address performance issues in this project.
 
-To get started, check out the repository, inspect the code,
+My Goal: to complete this project before the end of this month.
 
-### Getting started
+Mary Eckmeier
 
-####Part 1: Optimize PageSpeed Insights score for index.html
+Key elements to address: optimize index.html (per instructions from pagespeed insights)
 
-Some useful tips to help you get started:
 
-1. Check out the repository
+1. Forked repository.
+2. Re configure git bash / as my computer failed since i took the course and I can't remember all the setup tasks.
+    a. git init
+    b. git clone <http link>
+    c. git add
+    d. git commit
+
+Check out the repository
 1. To inspect the site on your phone, you can run a local server
 
   ```bash
