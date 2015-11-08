@@ -9,7 +9,7 @@ Mary Eckmeier
 Key elements to address: optimize index.html (per instructions from pagespeed insights)
 Resized pizzeria.jpg into 2 sizes (one for index, and one for pizza)
 Created a GULP workflow to compress all the files. and constructed a build folder
-  
+
 1. Forked repository.
 2. Re configure git bash / as my computer failed since i took the course and I can't remember all the setup tasks.
     a. git init
@@ -29,6 +29,7 @@ To create a http site for Pagespeed to evaluate, I used ngrok
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
+1. Identified that the biggest issue for running is the UpdatePositions code.
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
