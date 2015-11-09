@@ -6,13 +6,12 @@ var gulp = require('gulp'), //need this to do anything
     imagemin = require('gulp-imagemin'), //need this to optimize images
     minifyhtml = require('gulp-minify-html'); //and this for minify html
     minifycss = require('gulp-minify-css'); //i added this one.
-    pako = require('gulp-pako');
 
 // Compiles scss files and outputs them to build/css/*.css
 
 gulp.task('minifycss', function() {
   gulp.src('css/*.css')
-    .pipe(pako.deflate())
+    .pipe(minifycss())
     .pipe(gulp.dest("build/css"));
 });
 gulp.task('minifycss2', function() {

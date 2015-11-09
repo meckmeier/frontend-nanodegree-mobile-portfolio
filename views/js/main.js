@@ -454,19 +454,10 @@ var resizePizzas = function(size) {
     var newwidth = (document.getElementsByClassName("randomPizzaContainer")[0].offsetWidth + dx) + 'px';
 
     for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
-
       document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
-
   changePizzaSizes(size);
-  /* Advanced: Since the pizza widths are change the same width, is there a way to set the width all at once? Perhaps we can use CSS to set the width
-     of 'randomPizzaContainer'?
-  */
-
-
-
-
 
 
   // User Timing API is awesome
@@ -479,7 +470,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
+for (var i = 2; i < 48; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -513,8 +504,8 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   //mje: changed to use getElementsByClassName rather than queryselectorALL
     var items = document.getElementsByClassName('mover');
-  //there are only 5 values - so building them outside of loop is more efficient
-  //mje: i used these values from Aaron Butler as I was not clear on what these sin calcs were doing.
+
+  //mje:  Aaron Butler helped me work thru how these calculations could be rebuilt
   var top = document.body.scrollTop;
   var phases = [100 * Math.sin(top/1250),
     		100 * Math.sin(top/1250 + 1),
@@ -523,12 +514,7 @@ function updatePositions() {
     		100 * Math.sin(top/1250 + 4)];
 
   for (var i = 0; i < items.length; i++) {
-
     items[i].style.left = items[i].basicLeft + phases[i%5] + 'px';
-
-    //items[i].style.transform = 'translate3d('  + phases [i%5] + 'px, 0,0)';
-    //items[i].style['-webkit-transform'] = 'translateX('+phases[i%5]+'px)';
-		//items[i].style.transform = 'translateX('+phases[i%5]+'px)';
   }
   //mje: used to manage when the anination frame gets called
   window.animating = false;
