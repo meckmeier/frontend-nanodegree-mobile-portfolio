@@ -20,6 +20,7 @@ Created a GULP workflow to compress all the files. and constructed a build folde
 To run a local server for viewing the app: I created a bat file with this command:
    python -m SimpleHTTPServer 8080
    and placed in the BUILD directory (i am using the root as my dev environment.)
+   (continuing to look at browsersync to help with this task)
 
 To create a http site for Pagespeed to evaluate, I used ngrok
 (I did try to use the NGROK task in Gulp, but was not successful in implementing it)
@@ -27,13 +28,29 @@ To create a http site for Pagespeed to evaluate, I used ngrok
        ngrok http 8080
    I add a BUILD directory for the compressed files.
 
+To test pagespeed insights - i copied the server.bat above to the build folder, so it would run these files instead.
+
 
 ####Part 2: Optimize Frames per Second in pizza.html
 1. Identified that the biggest issue for running is the UpdatePositions code.
+* Reduced the number of pizza objects
+* Replaced queryselectorALL with getElementsByClassName
+* Add structure to use requestAnimationFrame (based on things I got from the forums)
+* Moved variable assignments outside of the loop structure.
+
+2. Addressed issues in resize pizza slider tool
+* Replaced queryselectorALL with getElementsByClassName
+* moved variables outside the loop structure.
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 
+I will continue to work on the following in the next project
+* automating with gulp by adding in watch files functionality
+* using something to get gulp to do the pagespeed insights.
+* using gulp to set up my local server
+
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+Keeping these as I think I still need to read up on these tasks:
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")

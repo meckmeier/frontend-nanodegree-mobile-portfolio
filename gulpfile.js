@@ -7,6 +7,13 @@ var gulp = require('gulp'), //need this to do anything
     minifyhtml = require('gulp-minify-html'); //and this for minify html
     minifycss = require('gulp-minify-css'); //i added this one.
 
+    var gulp = require('gulp');
+    var ghPages = require('gulp-gh-pages');
+
+    gulp.task('deploy', function() {
+      return gulp.src('./build/**/*')
+        .pipe(ghPages());
+    });
 // Compiles scss files and outputs them to build/css/*.css
 
 gulp.task('minifycss', function() {
