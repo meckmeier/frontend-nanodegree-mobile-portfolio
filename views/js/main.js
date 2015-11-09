@@ -450,14 +450,24 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[0], size);
+    var newwidth = (document.getElementsByClassName("randomPizzaContainer")[0].offsetWidth + dx) + 'px';
+
+    for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
+
+      document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
   changePizzaSizes(size);
+  /* Advanced: Since the pizza widths are change the same width, is there a way to set the width all at once? Perhaps we can use CSS to set the width
+     of 'randomPizzaContainer'?
+  */
+
+
+
+
+
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -514,12 +524,14 @@ function updatePositions() {
 
   for (var i = 0; i < items.length; i++) {
 
-    //items[i].style.left = items[i].basicLeft + phases[i%5] + 'px';
+    items[i].style.left = items[i].basicLeft + phases[i%5] + 'px';
 
-    items[i].style.transform = 'translate3d('  + phases [i%5] + 'px, 0,0)';
+    //items[i].style.transform = 'translate3d('  + phases [i%5] + 'px, 0,0)';
     //items[i].style['-webkit-transform'] = 'translateX('+phases[i%5]+'px)';
 		//items[i].style.transform = 'translateX('+phases[i%5]+'px)';
   }
+  //mje: used to manage when the anination frame gets called
+  window.animating = false;
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
@@ -532,12 +544,22 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', updatePositions);
+//mje: from the forums mcs offered some suggestion on how to format this request animiation frame syntax
+// which i copied below.
+window.addEventListener('scroll', animationReadyCheck);
+
+function animationReadyCheck() {
+  if (!window.animating) {
+    window.requestAnimationFrame(updatePositions);
+    window.animating = true;
+  }
+}
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  //mje: reduced the number of pizzas from 200 to 48 (5 X 8 cols below)
   for (var i = 0; i < 48; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';

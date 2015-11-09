@@ -73,11 +73,11 @@ gulp.task('images4', function() {
     .pipe(imagemin({progressive:true}))
     .pipe(gulp.dest('build/views/images'));
 });
-gulp.task('images4', function() {
+gulp.task('images5', function() {
     return gulp.src('views/images/TinyPizzeria.jpg')
     .pipe(imagemin({progressive:false}))
     .pipe(gulp.dest('build/views/images'));
 });
 
 
-gulp.task('default', ['minifycss', 'minifycss2', 'uglify', 'uglify2','minifyhtml', 'minifyhtml2','images', 'images2','images3','images4']);
+gulp.task('default', ['minifycss', 'minifycss2', 'uglify', 'uglify2','minifyhtml', 'minifyhtml2','images', 'images2','images3','images4', 'images5']);
